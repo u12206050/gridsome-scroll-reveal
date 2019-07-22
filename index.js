@@ -1,4 +1,4 @@
-const sr = require('scrollreveal').default();
+const sr = process.isClient && require('scrollreveal').default();
 
 function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
   const options = Object.assign({}, defaultOptions, bindingValue);
@@ -20,7 +20,7 @@ function generateOptions(defaultOptions, bindingValue, bindingModifiers) {
   return options;
 }
 
-const VueScrollReveal = {
+const GridsomeScrollReveal = {
   install(Vue, defaultOptions) {
     Vue.directive('scroll-reveal', {
       inserted: (el, binding) => {
@@ -31,25 +31,29 @@ const VueScrollReveal = {
           delete options.class;
         }
 
-        sr.reveal(el, options);
+        if (process.isClient) {
+          sr.reveal(el, options);
+        }
       },
       update: (el, binding) => {
         if (binding.value != binding.oldValue) {
           const options = generateOptions(defaultOptions, binding.value, binding.modifiers);
-
-          sr.reveal(el, options);
+          if (process.isClient) {
+            sr.reveal(el, options);
+          }
         }
       },
     });
 
     const $sr = {
       isSupported() {
-        return sr.isSupported();
+        return process.isClient && sr.isSupported();
       },
       sync() {
-        sr.sync();
+        process.isClient && sr.sync();
       },
       reveal(target, config, interval, sync) {
+        if (!process.isClient) return
         const options = generateOptions(defaultOptions, config);
 
         sr.reveal(target, config, interval, sync);
@@ -64,4 +68,4 @@ const VueScrollReveal = {
   },
 };
 
-export default VueScrollReveal;
+export default GridsomeScrollReveal;

@@ -1,5 +1,7 @@
-# vue-scroll-reveal [![license](https://img.shields.io/github/license/tserkov/vue-scroll-reveal.svg)]()
-A Vue directive to wrap [@jlmakes](https://github.com/jlmakes)' excellent [ScrollReveal](https://github.com/scrollreveal/scrollreveal) library.
+# gridsome-scroll-reveal
+A Gridsome Vue directive to wrap [@jlmakes](https://github.com/jlmakes)' excellent [ScrollReveal](https://github.com/scrollreveal/scrollreveal) library.
+
+This is forked from the original [vue-scroll-reveal](https://github.com/tserkov/vue-scroll-reveal) library by [tserkov](https://github.com/tserkov) with the added support for SSR
 
 The directive exposes `reset`, `nodesktop`, and `nomobile` as modifiers (ie. `v-scroll-reveal.reset.nomobile`).
 All other options can be passed to `Vue.use` or to individual elements as a value (ie. `v-scroll-reveal={ delay: 250 }`).
@@ -8,12 +10,12 @@ All other options can be passed to `Vue.use` or to individual elements as a valu
 
 ``` bash
 # npm
-npm install --save vue-scroll-reveal
+npm install --save gridsome-scroll-reveal
 ```
 
 ``` bash
 # yarn
-yarn add vue-scroll-reveal
+yarn add gridsome-scroll-reveal
 ```
 
 ## Use
@@ -21,7 +23,7 @@ Remember! Any of the [ScrollReveal options](https://scrollrevealjs.org/api/defau
 
 ```javascript
 // In main.js
-import VueScrollReveal from 'vue-scroll-reveal';
+import VueScrollReveal from 'gridsome-scroll-reveal';
 
 // Using ScrollReveal's default configuration
 Vue.use(VueScrollReveal);
@@ -72,20 +74,8 @@ As of 1.0.4, the `isSupported()` and `sync()` methods are exposed via `Vue.$sr` 
 As of 1.0.7, the `reveal(target, config, interval, sync)` is exposed via `Vue.$sr` or `this.$sr`, though using the directive
 is preferred in order to keep with Vue principles.
 
-## Nuxt
-
-If using as a plugin with [Nuxt](https://github.com/nuxt/nuxt.js), make sure to disable server-side rendering in `nuxt.config.js`.
-
-```javascript
-module.exports = {
-  plugins: [
-    { src: '~/plugins/vue-scroll-reveal', ssr: false }
-  ],
-}
-```
-
 ## License
 
-While the code within this component (tserkov/vue-scroll-reveal) is [MIT-licensed](https://github.com/tserkov/vue-scroll-reveal/blob/master/LICENSE.md), ScrollReveal is [GPL3-licensed](https://github.com/scrollreveal/scrollreveal#license), and requires the purchase of a [Commercial License](https://scrollrevealjs.org/pricing/) if you want to use it in a closed-source project.
+While the code within this component is [MIT-licensed](https://github.com/tserkov/gridsome-scroll-reveal/blob/master/LICENSE.md), ScrollReveal is [GPL3-licensed](https://github.com/scrollreveal/scrollreveal#license), and requires the purchase of a [Commercial License](https://scrollrevealjs.org/pricing/) if you want to use it in a closed-source project.
 
-For an explanation of why this component is licensed differently, see [#15](https://github.com/tserkov/vue-scroll-reveal/issues/21#issuecomment-424193121).
+For an explanation of why this component is licensed differently, see [#15](https://github.com/tserkov/gridsome-scroll-reveal/issues/21#issuecomment-424193121).
